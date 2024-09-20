@@ -1,4 +1,4 @@
-use std::{fmt::format, io::{stdout, Write}, net::{TcpListener, TcpStream}};
+use std::{fmt::format, io::{stdout, Read, Write}, net::{TcpListener}};
 use std::fs::read;
 
 pub fn run(host: String, port: u16)-> Result<(), String>{
@@ -18,7 +18,7 @@ pub fn run(host: String, port: u16)-> Result<(), String>{
                         })?;
     
                     }
-                    stdout().write(&buff[0..read_bytes]).map_err(||{
+                    stdout().write(&buff[0..read_bytes]).map_err(|_e|{
                         "failed to write to stdout"
                     })?;
                     stdout().flush().unwrap();
