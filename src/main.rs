@@ -1,3 +1,5 @@
+use std::time::Duration;
+
 use clap::{Parser, Subcommand};
 
 pub mod connect;
@@ -74,4 +76,6 @@ fn main(){
             });        
         }
     }
+
+    runtime.shutdown_timeout(Duration::from_secs(0));
 }
